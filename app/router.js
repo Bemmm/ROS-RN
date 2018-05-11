@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
 import  ProductsScreen  from "./screens/Products";
 import { addListener } from './store/redux';
-
+import  { initialize } from './dispatchers'
 import { actionCreators } from './actions';
 
 export const AppNavigator = StackNavigator({
@@ -19,7 +19,9 @@ class AppWithNavigationState extends React.Component {
     dispatch: PropTypes.func.isRequired,
     nav: PropTypes.object.isRequired,
   };
-
+  componentWillMount(){
+    this.props.initializeRealm();
+  }
   render() {
     const { dispatch, nav } = this.props;
     return (
@@ -39,7 +41,9 @@ const mapStateToProps = state => ({
   realm: state.realm
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(actionCreators, dispatch)
-}
-export default connect(mapStateToProps, mapDispatchToProps )(AppWithNavigationState);
+const mapDispatchToProps = (dispatch) => ({
+    initializeRealm: () => {
+      dispatch(initialize(dispatch))
+    }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(AppWithNavigationState);

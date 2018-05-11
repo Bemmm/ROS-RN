@@ -6,10 +6,6 @@ import AppWithNavigationState from './router';
 import {store} from './store'
 
 export default class App extends React.Component {
-  componentWillMount(){
-    store.dispatch({type:INITIALIZE_REALM})
-    console.log('STATEEEEEEEEE', store.getState())
-  }
   render() {
     return (
     <Provider store={store}>
