@@ -1,19 +1,6 @@
 import {
-    initializeRealm,
-    initializeRealmSuccess,
-    initializeRealmFailure
+    initializeRealm
 } from './initialize'
-import {
-    getRealmInstance,
-    getRealmInstanceSuccess,
-    getRealmInstanceFailure
-} from './get-realm-instance';
-
 export {
-    initializeRealm,
-    initializeRealmSuccess,
-    initializeRealmFailure,
-    getRealmInstance,
-    getRealmInstanceSuccess,
-    getRealmInstanceFailure
+    initializeRealm
 }

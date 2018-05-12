@@ -44,6 +44,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
     initializeRealm: () => {
       dispatch(initialize(dispatch))
-    }
+    },
+    dispatch
 })
 export default connect(mapStateToProps, mapDispatchToProps)(AppWithNavigationState);

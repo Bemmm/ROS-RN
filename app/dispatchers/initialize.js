@@ -2,6 +2,7 @@ import Realm from 'realm';
 import Schemas from '../config/schemas';
 import config from '../config/realm';
 import {initializeRealm}  from '../actions';
+import { modifiedCollection } from '../actions';
 
 
 export default initialize = (dispatch) => {
@@ -14,13 +15,18 @@ export default initialize = (dispatch) => {
               },
               schema: Schemas
             }).then(realm => {
+                // realm.objects('Product').addListener((puppies, changes) => {
+                //     console.log('changes', product, changes);
+                //     changes.modifications.forEach((index) => {
+                //       let modifiedItem= product[index];
+                //       dispatch(modifiedCollection(modifiedItem));
+                //     });
+                //   });
                 dispatch(initializeRealm(realm));
           })
       })
       .catch(err => console.log('ERROR', err)).then(data => {
          this.realm = data
       })
-        
-        
     };
 }
