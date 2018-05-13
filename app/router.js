@@ -20,7 +20,7 @@ class AppWithNavigationState extends React.Component {
     nav: PropTypes.object.isRequired,
   };
   componentWillMount(){
-    this.props.initializeRealm();
+    // this.props.initializeRealm();
   }
   render() {
     const { dispatch, nav } = this.props;

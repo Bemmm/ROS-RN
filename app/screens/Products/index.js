@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import Product from '../../components/product-item'
+import Product from '../../components/product-item';
+import  { initialize } from '../../dispatchers'
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
@@ -19,14 +21,24 @@ const styles = StyleSheet.create({
   }
 });
 
-const ProductsScreen = (props) => {
-  if(props.realm){
-      props.realm.objects('Product').addListener((products, changes) => {
-        this.forceUpdate()
-      });      
+class ProductsScreen extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { realm: null};    
+  }
+  componentWillMount(){
+    initialize((realm)=>{
+      this.setState({realm})
+      realm.objects('Product').addListener((data) => {
+        this.setState({realm})
+      });
+    })    
+  }
+  render(){
+    if(this.state.realm){
       return (
         <View style={styles.container}>
-          <FlatList data={props.realm.objects('Product')} renderItem={({item})=>
+          <FlatList data={this.state.realm.objects('Product')} renderItem={({item})=>
             <Product item={item}/>
             }
           />
@@ -38,6 +50,7 @@ const ProductsScreen = (props) => {
       </View>
       )
   }
+    }      
 
   }
 
@@ -47,7 +60,6 @@ ProductsScreen.navigationOptions = {
 };
 
 const mapStateToProps = state => {
-  console.log(state.realm)
   if (state.realm.realm) return {
     realm: state.realm.realm
   }

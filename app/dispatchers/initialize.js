@@ -6,8 +6,7 @@ import { modifiedCollection } from '../actions';
 
 
 export default initialize = (dispatch) => {
-    return (dispatch) => {
-        Realm.Sync.User.login(config.realm_server, config.realm_username, config.realm_password).then(user => {
+      Realm.Sync.User.login(config.realm_server, config.realm_username, config.realm_password).then(user => {
             return Realm.open({
               sync: {
                 user: user,
@@ -15,17 +14,18 @@ export default initialize = (dispatch) => {
               },
               schema: Schemas
             }).then(realm => {
+                dispatch(realm)
                 // realm.objects('Product').addListener((products, changes) => {
                 //     changes.modifications.forEach((index) => {
                 //       let modifiedItem= products[index];
                 //       dispatch(modifiedCollection(modifiedItem));
                 //     });
                 //   });
-                dispatch(initializeRealm(realm));
+                // dispatch(initializeRealm(realm));
           })
       })
       .catch(err => console.log('ERROR', err)).then(data => {
          this.realm = data
       })
-    };
+    
 }
