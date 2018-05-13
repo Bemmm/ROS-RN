@@ -20,10 +20,13 @@ const styles = StyleSheet.create({
 });
 
 const ProductsScreen = (props) => {
-  if(props.products){
+  if(props.realm){
+      props.realm.objects('Product').addListener((products, changes) => {
+        this.forceUpdate()
+      });      
       return (
         <View style={styles.container}>
-          <FlatList data={props.products.objects('Product')} renderItem={({item})=>
+          <FlatList data={props.realm.objects('Product')} renderItem={({item})=>
             <Product item={item}/>
             }
           />
@@ -46,7 +49,7 @@ ProductsScreen.navigationOptions = {
 const mapStateToProps = state => {
   console.log(state.realm)
   if (state.realm.realm) return {
-    products: state.realm.realm
+    realm: state.realm.realm
   }
   else
     return {}

@@ -15,10 +15,9 @@ export default initialize = (dispatch) => {
               },
               schema: Schemas
             }).then(realm => {
-                // realm.objects('Product').addListener((puppies, changes) => {
-                //     console.log('changes', product, changes);
+                // realm.objects('Product').addListener((products, changes) => {
                 //     changes.modifications.forEach((index) => {
-                //       let modifiedItem= product[index];
+                //       let modifiedItem= products[index];
                 //       dispatch(modifiedCollection(modifiedItem));
                 //     });
                 //   });
