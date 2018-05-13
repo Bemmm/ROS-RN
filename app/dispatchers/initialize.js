@@ -1,8 +1,6 @@
 import Realm from 'realm';
 import Schemas from '../config/schemas';
 import config from '../config/realm';
-import {initializeRealm}  from '../actions';
-import { modifiedCollection } from '../actions';
 
 
 export default initialize = (dispatch) => {

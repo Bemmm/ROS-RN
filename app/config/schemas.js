@@ -148,6 +148,7 @@ const Product = {
         name: 'string',
         supplier: 'Supplier',
         images: 'Image[]',
+        user: 'User',
         price: 'Price',
         category: 'Category',
         description: 'string?',

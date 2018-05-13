@@ -11,10 +11,10 @@ const Product = (props)=> (
             <Text style={styles.name}>{props.item.name}</Text>
             <Text style={styles.info}>{props.item.category.name}</Text>
             <Text style={styles.info}>{props.item.supplier.name}</Text>
-            <Text style={styles.info}>{props.item.supplier.name}</Text>
-          </View>
-          <View style={styles.priceWrapper}>
-            <Text style={styles.price}>{props.item.price.currency} {props.item.price.value}</Text>
+            <View style={styles.priceWrapper}>
+              <Text style={styles.info}>{props.item.user ? props.item.user.name : 'Incognito' }</Text>
+              <Text style={styles.price}>{props.item.price.currency} {props.item.price.value}</Text>
+            </View>
           </View>
         </View>
 )
@@ -57,15 +57,16 @@ const Product = (props)=> (
           marginTop:5,
         },
         priceWrapper:{
-          width:100,
-          flex:1,
-          alignSelf: 'flex-end'
+          alignItems:'center',
+          justifyContent:'space-between',
+          flexDirection:'row'
         },
         price:{
           textAlign: 'right',
           color: '#404040',
           fontSize:13,
-          fontWeight: '200'
+          fontWeight: '200',
+          marginTop:5          
         }
       });
     export default Product

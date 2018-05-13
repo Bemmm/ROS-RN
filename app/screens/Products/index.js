@@ -59,13 +59,12 @@ ProductsScreen.navigationOptions = {
   title: 'Products',
 };
 
-const mapStateToProps = state => {
-  if (state.realm.realm) return {
-    realm: state.realm.realm
+const mapStateToProps = state => (
+  {
+    nav: state.nav
   }
-  else
-    return {}
-}
+)
+
 
 
 export default connect(mapStateToProps)(ProductsScreen);
