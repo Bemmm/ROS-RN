@@ -12,14 +12,7 @@ export default initialize = (dispatch) => {
               },
               schema: Schemas
             }).then(realm => {
-                dispatch(realm)
-                // realm.objects('Product').addListener((products, changes) => {
-                //     changes.modifications.forEach((index) => {
-                //       let modifiedItem= products[index];
-                //       dispatch(modifiedCollection(modifiedItem));
-                //     });
-                //   });
-                // dispatch(initializeRealm(realm));
+              dispatch(realm)
           })
       })
       .catch(err => console.log('ERROR', err)).then(data => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import Product from '../../components/product-item';
-import  { initialize } from '../../dispatchers'
+import Product from '../components/product-item';
+import  { initialize } from '../dispatchers'
 
 const styles = StyleSheet.create({
   container: {
@@ -43,14 +43,14 @@ class ProductsScreen extends React.Component{
             }
           />
       </View>);
-  } else {
-    return (
-      <View style={styles.loadingWrapper}>
-        <Text style={styles.loading}>Loading...</Text>
-      </View>
+    } else {
+      return (
+        <View style={styles.loadingWrapper}>
+          <Text style={styles.loading}>Loading...</Text>
+        </View>
       )
+    }
   }
-    }      
 
   }
 

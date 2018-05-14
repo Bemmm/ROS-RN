@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
-import  ProductsScreen  from "./screens/Products";
+import  ProductsScreen  from "./screens/products";
 import { addListener } from './store/redux';
-import  { initialize } from './dispatchers'
 
 export const AppNavigator = StackNavigator({
   Products: {
