@@ -3,7 +3,7 @@ import Schemas from '../config/schemas';
 import config from '../config/realm';
 
 
-export default initialize = (dispatch) => {
+export default initialize = (callback) => {
       Realm.Sync.User.login(config.realm_server, config.realm_username, config.realm_password).then(user => {
             return Realm.open({
               sync: {
@@ -12,7 +12,7 @@ export default initialize = (dispatch) => {
               },
               schema: Schemas
             }).then(realm => {
-              dispatch(realm)
+              callback(realm)
           })
       })
       .catch(err => console.log('ERROR', err)).then(data => {
